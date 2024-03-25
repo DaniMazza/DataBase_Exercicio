@@ -1,0 +1,83 @@
+create database if not exists EMPRESA;
+use empresa;
+
+create table if not exists Departamento(
+id_Departamento int primary key,
+nome varchar(70) not null
+);
+
+create table if not exists Funcionario(
+id_funcionario int primary key, 
+cpf varchar(15) not null,
+rg varchar(14) not null, 
+nome varchar(50) not null, 
+sobrenome varchar(50) not null, 
+data_nascimento date, 
+endereco varchar(80) not null, 
+cep varchar(9) not null, 
+cidade varchar(70) not null, 
+telefone varchar(20) not null, 
+salario float(9, 2), 
+id_Departamento int,
+
+constraint Fk_Departamento_Funcionario foreign key(id_Departamento) 
+references Departamento(id_Departamento)
+);
+
+insert into Departamento
+(id_Departamento, nome)
+values
+(60, 'atendimento ao cliente'),
+(41, 'financeiro'),
+(32, 'contábil'),
+(83, 'marketing e vendas'),
+(64, 'produção'),
+(75, 'logística'),
+(66, 'TI(tecnologia da informação)'),
+(47, 'jurídico'),
+(88, 'pesquisa'),
+(99, 'compras'),
+(10, 'administração'),
+(21, 'recursos humanos');
+
+
+insert into Funcionario
+(id_funcionario, cpf,
+rg, nome, 
+sobrenome, data_nascimento, 
+endereco, cep, cidade, 
+telefone, salario, 
+id_Departamento)
+values
+
+(10000, '212.215.845-22', '1145.121-55', 'Sol', 'Mazzarolo', '2005-01-15', 
+'Rua dos apaixonados, 33 - Jardim tocanos', '95495-222', 'Palmas', '(55) 91488-9696', '8000.50', 60),
+
+(10001, '125.355.845-72', '4545.458-55', 'Zira', 'Beber', '2005-01-15', 
+'Rua dos Lipom, 43 - Jardim Lino', '84152-222', 'São Paulo', '(51) 92288-9696', '8000.50', 66),
+
+(10002, '856.125.845-42', '4545.158-55', 'Nica', 'Da Silva', '2005-01-15', 
+'Rua dos Bobons, 53 - Jardim tocanos', '81255-222', 'Assunção', '(51) 93128-9696', '8000.50', 10),
+
+(10003, '789.215.858-22', '4785.758-22', 'Gab', 'Souza', '2005-01-15', 
+'Rua dos Programadores, 63 - Conteners Legands', '89195-111', 'Palmares', '(55) 97888-9696', '1420.50', 88),
+
+(10004, '985.225.821-42', '1255.148-12', 'Welly', 'De Assis', '2005-01-15', 
+'Rua dos Testers, 73 - Jardim Livramento', '81295-122', 'Porto Alegre', '(55) 97544-4524', '2221.50', 47),
+
+(10005, '212.111.845-23', '4040.111-55', 'Thiago', 'Mazzarolo', '2005-01-15', 
+'Rua do Gabriel Beber, 83 - Santana do Livramento', '55546-222', 'Gravataí', '(51) 98775-9542', '1420.50', 32),
+
+(10006, '112.255.825-21', '0045.418-15', 'Susha', 'Dom Martinz', '2005-01-15', 
+'Rua da Antonia, 93 - Londres do Livramento', '48566-222', 'cachoeirinha', '(51) 90000-9696', '8568.50', 41),
+
+(10007, '812.715.745-22', '0213.458-12', 'Mila', 'Pires', '2005-01-15', 
+'Rua do Campo, 103 - New Livramento City', '98566-512', 'Porto Alegre', '(51) 98818-0001', '7800.50', 41),
+
+(10008, '712.275.745-22', '7845.488-00', 'Ziru', 'Tenas', '2005-01-15', 
+'Rua da Bianca Machado, 113 - Livramento com Palmas', '12495-125', 'Porto Alegre', '(51) 98118-5596', '8700.50', 21),
+
+(10009, '888.215.845-77', '7845.458-55', 'Lilla', 'Torronte', '2005-01-15', 
+'Rua do tubarão, 123 - Jardim Europa', '12895-542', 'Porto Alegre', '(55) 95558-8886', '8500.50', 10);
+
+
