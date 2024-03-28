@@ -15,3 +15,7 @@
 ⚪ Fazer a implementação de no mínimo 10 registros em cada tabela.
   
 </div>
+<div>
+  <h1>💠SEGUNDA PARTE💠</h1>
+  Reescrever o código acima fazendo a normalização dos dados
+</div>
