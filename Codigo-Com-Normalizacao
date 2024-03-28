@@ -5,14 +5,6 @@ create table if not exists Departamento(
 id_Departamento int primary key,
 nome varchar(70) not null
 );
-create table if not exists Endereco(
-id_Endereco int primary key,
-logradouro varchar (250) not null,
-numero int not null,
-complemento varchar(40) not null,
-cidade varchar (100)not null,
-cep varchar (15) not null
-);
 
 create table if not exists Funcionario(
 id_funcionario int primary key, 
@@ -24,15 +16,24 @@ data_nascimento date,
 telefone varchar(20) not null, 
 salario float(9, 2), 
 id_Departamento int,
-id_Endereco int,
-
-constraint Fk_Endereco_Funcionario foreign key(id_Endereco)
-references Endereco(id_Endereco),
 
 constraint Fk_Departamento_Funcionario foreign key(id_Departamento) 
 references Departamento(id_Departamento)
 );
 
+create table if not exists Endereco(
+id_Endereco int primary key,
+logradouro varchar (250) not null,
+numero int not null,
+complemento varchar(40) not null,
+cidade varchar (100)not null,
+cep varchar (15) not null,
+
+id_Funcionario int,
+
+constraint Fk_Endereco_Funcionario foreign key(id_Funcionario)
+references Funcionario(id_Funcionario)
+);
 insert into Departamento
 (id_Departamento, nome)
 values
@@ -49,48 +50,46 @@ values
 (10, 'administração'),
 (21, 'recursos humanos');
 
-insert into Endereco 
-(id_endereco, logradouro, numero, complemento, cidade, cep)
-values
-(1, 'Rua dos apaixonados', 33,'Casa cinza','Jardim tocanos', '89895-222'),
-(2, 'Rua do Milharal', 33, 'Casa azul', 'Jardim Tocantins', '87875-727'),
-(3, 'Rua dos apaixonados', 44, 'Apto 221', 'Jardim Boulevard', '71195-111'),
-(4, 'Rua dos Motoristas', 993, 'Predio Azul, Apto 222', 'Palmas', '21195-111'),
-(5, 'Estrada da Desesperança', 113, 'Predio Verde, Apto 012', 'Jardim do Recentimento', '01195-122'),
-(6, 'Avenida do Amor', 25, 'casa colorida', 'Jardim da Alegria', '12111-110'),
-(7, 'Rua da Paixão', 22, 'Apto 222', 'Jardim do Sentimento', '43235-122'),
-(8, 'Rua do René', 19, 'Apto 012, prédio vermelho', 'Jardim da Triste', '12125-120'),
-(9, 'Rua do Sol', 9, 'Casa preta', 'Jardim da Ansiedade', '11295-922'),
-(10, 'Avenida Sol Mazzarolo', 10, 'Apto 010', 'Jardim da Depressão', '80000-022');
 
 insert into Funcionario
 (id_funcionario, cpf,
 rg, nome, 
 sobrenome, data_nascimento, 
 telefone, salario,
-id_Endereco, 
 id_Departamento)
 values
 
-(10000, '212.215.845-22', '1145.121-55', 'Sol', 'Mazzarolo', '2005-01-15', '(55) 91488-9696', '8000.50', 1, 60),
+(10000, '212.215.845-22', '1145.121-55', 'Sol', 'Mazzarolo', '2005-01-15', '(55) 91488-9696', '8000.50', 60),
 
-(10001, '125.355.845-72', '4545.458-55', 'Zira', 'Beber', '2005-01-15', '(51) 92288-9696', '8000.50', 2, 66),
+(10001, '125.355.845-72', '4545.458-55', 'Zira', 'Beber', '2005-01-15', '(51) 92288-9696', '8000.50', 66),
 
-(10002, '856.125.845-42', '4545.158-55', 'Nica', 'Da Silva', '2005-01-15', '(51) 93128-9696', '8000.50', 3, 10),
+(10002, '856.125.845-42', '4545.158-55', 'Nica', 'Da Silva', '2005-01-15', '(51) 93128-9696', '8000.50', 10),
 
-(10003, '789.215.858-22', '4785.758-22', 'Gab', 'Souza', '2005-01-15', '(55) 97888-9696', '1420.50', 4, 88),
+(10003, '789.215.858-22', '4785.758-22', 'Gab', 'Souza', '2005-01-15', '(55) 97888-9696', '1420.50', 88),
 
-(10004, '985.225.821-42', '1255.148-12', 'Welly', 'De Assis', '2005-01-15', '(55) 97544-4524', '2221.50', 5, 47),
+(10004, '985.225.821-42', '1255.148-12', 'Welly', 'De Assis', '2005-01-15', '(55) 97544-4524', '2221.50', 47),
 
-(10005, '212.111.845-23', '4040.111-55', 'Thiago', 'Mazzarolo', '2005-01-15', '(51) 98775-9542', '1420.50', 6, 32),
+(10005, '212.111.845-23', '4040.111-55', 'Thiago', 'Mazzarolo', '2005-01-15', '(51) 98775-9542', '1420.50', 32),
 
-(10006, '112.255.825-21', '0045.418-15', 'Susha', 'Dom Martinz', '2005-01-15', '(51) 90000-9696', '8568.50', 7, 41),
+(10006, '112.255.825-21', '0045.418-15', 'Susha', 'Dom Martinz', '2005-01-15', '(51) 90000-9696', '8568.50', 41),
 
-(10007, '812.715.745-22', '0213.458-12', 'Mila', 'Pires', '2005-01-15', '(51) 98818-0001', '7800.50', 8, 41),
+(10007, '812.715.745-22', '0213.458-12', 'Mila', 'Pires', '2005-01-15', '(51) 98818-0001', '7800.50', 41),
 
-(10008, '712.275.745-22', '7845.488-00', 'Ziru', 'Tenas', '2005-01-15', '(51) 98118-5596', '8700.50', 9, 21),
+(10008, '712.275.745-22', '7845.488-00', 'Ziru', 'Tenas', '2005-01-15', '(51) 98118-5596', '8700.50', 21),
 
-(10009, '888.215.845-77', '7845.458-55', 'Lilla', 'Torronte', '2005-01-15', '(55) 95558-8886', '8500.50', 10, 10);
-
+(10009, '888.215.845-77', '7845.458-55', 'Lilla', 'Torronte', '2005-01-15', '(55) 95558-8886', '8500.50', 10);
+insert into Endereco 
+(id_endereco, logradouro, numero, complemento, cidade, cep, id_funcionario)
+values
+(1, 'Rua dos apaixonados', 33,'Casa cinza','Jardim tocanos', '89895-222', 10000),
+(2, 'Rua do Milharal', 33, 'Casa azul', 'Jardim Tocantins', '87875-727', 10001),
+(3, 'Rua dos apaixonados', 44, 'Apto 221', 'Jardim Boulevard', '71195-111', 10002),
+(4, 'Rua dos Motoristas', 993, 'Predio Azul, Apto 222', 'Palmas', '21195-111', 10003),
+(5, 'Estrada da Desesperança', 113, 'Predio Verde, Apto 012', 'Jardim do Recentimento', '01195-122', 10004),
+(6, 'Avenida do Amor', 25, 'casa colorida', 'Jardim da Alegria', '12111-110', 10005),
+(7, 'Rua da Paixão', 22, 'Apto 222', 'Jardim do Sentimento', '43235-122', 10006),
+(8, 'Rua do René', 19, 'Apto 012, prédio vermelho', 'Jardim da Triste', '12125-120', 10007),
+(9, 'Rua do Sol', 9, 'Casa preta', 'Jardim da Ansiedade', '11295-922', 10008),
+(10, 'Avenida Sol Mazzarolo', 10, 'Apto 010', 'Jardim da Depressão', '80000-022', 10009);
 
 
