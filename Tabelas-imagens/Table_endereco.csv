@@ -1,0 +1,11 @@
+id,cep,logradouro,numero,complemento,cidade,id_funcionario
+1,89895-222,"Rua dos apaixonados",33,NULL,"Jardim tocanos",1
+2,87875-727,"Rua do Milharal",33,NULL,"Jardim Tocantins",2
+3,71195-111,"Rua dos apaixonados",44,"Apto 221","Jardim Boulevard",3
+4,21195-111,"Rua dos Motoristas",993,"Predio Azul, Apto 222",Palmas,3
+5,01195-122,"Estrada da Desesperança",113,"Predio Verde, Apto 012","Jardim do Recentimento",4
+6,12111-110,"Avenida do Amor",25,"casa colorida","Jardim da Alegria",1
+7,43235-122,"Rua da Paixão",22,"Apto 222","Jardim do Sentimento",6
+8,12125-120,"Rua do René",19,"Apto 012, prédio vermelho","Jardim da Triste",7
+9,11295-922,"Rua do Sol",9,NULL,"Jardim da Ansiedade",8
+10,80000-022,"Avenida Sol Mazzarolo",10,"Apto 010","Jardim da Depressão",9
